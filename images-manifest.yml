@@ -1,0 +1,11 @@
+version: 1.0.0
+
+images:
+  - name: obs-dashboard
+    docker_file: docker/Dockerfile
+    docker_image: qa/obs-dashboard
+    public_image: ce/obs-dashboard
+    platforms: linux/amd64, linux/arm/v7, linux/arm64
+    public: true
+    snyk_check: true
+    target: null
