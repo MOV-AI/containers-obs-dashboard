@@ -1,5 +1,5 @@
 # Main image
-FROM grafana/grafana:12.3 AS base
+FROM grafana/grafana:12.4 AS base
 
 # Labels
 LABEL description="MOV.AI Observability Dashboard - Grafana based dashboard for monitoring and visualization" \
