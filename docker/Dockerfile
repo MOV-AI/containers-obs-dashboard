@@ -1,5 +1,5 @@
 # Main image
-FROM grafana/grafana:12.3 AS base
+FROM grafana/grafana:13.0 AS base
 
 # Labels
 LABEL description="MOV.AI Observability Dashboard - Grafana based dashboard for monitoring and visualization" \
@@ -15,5 +15,8 @@ COPY files/grafana.ini /etc/grafana/grafana.ini
 # Configuration Files: YAML Format
 COPY files/dashboards/*.yml /etc/grafana/provisioning/dashboards/
 COPY files/datasources/*.yml /etc/grafana/provisioning/datasources/
+
+# Datasource URLs, overridable so Grafana can be pointed at a tunnel instead of the container
+ENV MIMIR_URL=http://metrics-store:8080/prometheus
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "curl", "-s", "-f", "http://localhost:3000/api/health" ]
