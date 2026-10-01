@@ -13,7 +13,8 @@ LABEL description="MOV.AI Observability Dashboard - Grafana based dashboard for 
 COPY files/grafana.ini /etc/grafana/grafana.ini
 
 # Configuration Files: YAML Format
-COPY files/dashboards/*.yml /etc/grafana/provisioning/dashboards/
+COPY files/dashboards/provisioning/*.yml /etc/grafana/provisioning/dashboards/
+COPY files/dashboards/*.json /var/lib/grafana/dashboards/
 COPY files/datasources/*.yml /etc/grafana/provisioning/datasources/
 
 # Datasource URLs, overridable so Grafana can be pointed at a tunnel instead of the container
