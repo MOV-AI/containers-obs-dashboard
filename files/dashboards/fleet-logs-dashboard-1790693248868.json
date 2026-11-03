@@ -12,7 +12,7 @@
       "grafana.app/deprecatedInternalID": "858271576162304"
     },
     "annotations": {
-      "grafana.app/createdBy": "access-policy:service",
+      "grafana.app/createdBy": "user:bfyg64davxo8wd",
       "grafana.app/folder": "",
       "grafana.app/managedBy": "classic-file-provisioning",
       "grafana.app/managerAllowsEdits": "true",
@@ -102,7 +102,7 @@
                 "showControls": false,
                 "showFieldSelector": false,
                 "showLevel": true,
-                "showTime": true,
+                "showTime": false,
                 "sortOrder": "Descending",
                 "syntaxHighlighting": false,
                 "timestampResolution": "ms",
@@ -204,7 +204,7 @@
                       },
                       "spec": {
                         "direction": "backward",
-                        "editorMode": "code",
+                        "editorMode": "builder",
                         "expr": "{service=\"orchestrator\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}` ${log_only:raw}",
                         "queryType": "range"
                       }
@@ -268,7 +268,7 @@
                       },
                       "spec": {
                         "direction": "backward",
-                        "editorMode": "code",
+                        "editorMode": "builder",
                         "expr": "{service=\"backend\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}` ${log_only:raw}",
                         "queryType": "range"
                       }
