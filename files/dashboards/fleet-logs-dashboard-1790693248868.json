@@ -465,8 +465,8 @@
           "name": "log_only",
           "query": "False : | logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{__line__}}{{end}}` | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__, \nTrue : | logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{$json := fromJson (__line__)}}{{if $json}}{{with $json.message}}{{.}}{{end}}{{else}}{{__line__}}{{end}}{{end}}` | display_line != \"\" | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__",
           "current": {
-            "text": "False",
-            "value": "False"
+            "text": "True",
+            "value": "| logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{$json := fromJson (__line__)}}{{if $json}}{{with $json.message}}{{.}}{{end}}{{else}}{{__line__}}{{end}}{{end}}` | display_line != \"\" | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__"
           },
           "options": [],
           "multi": false,
