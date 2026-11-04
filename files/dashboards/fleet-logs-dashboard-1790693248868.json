@@ -4,19 +4,25 @@
   "metadata": {
     "name": "adbxzgx",
     "namespace": "default",
-    "uid": "a4c69bf4-dcb3-4484-bd75-7b81652150fe",
-    "resourceVersion": "1790682346445989",
-    "generation": 16,
-    "creationTimestamp": "2026-09-23T12:54:36Z",
+    "uid": "031cb4c2-7e78-46b9-9b92-17d0746ccb3e",
+    "resourceVersion": "1793701425301006",
+    "generation": 15,
+    "creationTimestamp": "2026-11-03T09:30:59Z",
     "labels": {
-      "grafana.app/deprecatedInternalID": "4066006842044416"
+      "grafana.app/deprecatedInternalID": "858271576162304"
     },
     "annotations": {
       "grafana.app/createdBy": "user:bfyg64davxo8wd",
       "grafana.app/folder": "",
-      "grafana.app/saved-from-ui": "Grafana v13.0.8 (00656f0044)",
-      "grafana.app/updatedBy": "user:bfyg64davxo8wd",
-      "grafana.app/updatedTimestamp": "2026-09-29T11:45:46Z"
+      "grafana.app/managedBy": "classic-file-provisioning",
+      "grafana.app/managerAllowsEdits": "true",
+      "grafana.app/managerId": "Default",
+      "grafana.app/saved-from-ui": "Grafana v13.0.10 (885f00ce25)",
+      "grafana.app/sourceChecksum": "f689b75806b3470e966f93d3293a16ee",
+      "grafana.app/sourcePath": "/var/lib/grafana/dashboards/fleet-logs-dashboard-1790693248868.json",
+      "grafana.app/sourceTimestamp": "1790867478000",
+      "grafana.app/updatedBy": "user:eg368uxylys5cb",
+      "grafana.app/updatedTimestamp": "2026-11-03T10:23:45Z"
     }
   },
   "spec": {
@@ -67,8 +73,8 @@
                       },
                       "spec": {
                         "direction": "backward",
-                        "editorMode": "code",
-                        "expr": "{service_name=\"ros1-workspace\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `${search}` | logfmt | line_format \"{{.log}}\"",
+                        "editorMode": "builder",
+                        "expr": "{service_name=\"ros1-workspace\", robot=\"$robot\"}\n| detected_level =~ `${Levels:regex}`\n|~ `${search}` \n${log_only:raw}",
                         "queryType": "range"
                       }
                     },
@@ -84,7 +90,7 @@
           "vizConfig": {
             "kind": "VizConfig",
             "group": "logs",
-            "version": "13.0.8",
+            "version": "13.0.10",
             "spec": {
               "options": {
                 "dedupStrategy": "none",
@@ -95,7 +101,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "syntaxHighlighting": false,
@@ -134,8 +140,8 @@
                       },
                       "spec": {
                         "direction": "backward",
-                        "editorMode": "code",
-                        "expr": "{service_name=\"ros2-workspace\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}` | logfmt | line_format \"{{.log}}\"",
+                        "editorMode": "builder",
+                        "expr": "{service_name=\"ros2-workspace\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}` ${log_only:raw}",
                         "queryType": "range"
                       }
                     },
@@ -151,7 +157,7 @@
           "vizConfig": {
             "kind": "VizConfig",
             "group": "logs",
-            "version": "13.0.8",
+            "version": "13.0.10",
             "spec": {
               "options": {
                 "dedupStrategy": "none",
@@ -160,7 +166,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "timestampResolution": "ms",
@@ -199,7 +205,7 @@
                       "spec": {
                         "direction": "backward",
                         "editorMode": "builder",
-                        "expr": "{service=\"orchestrator\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}`",
+                        "expr": "{service=\"orchestrator\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}` ${log_only:raw}",
                         "queryType": "range"
                       }
                     },
@@ -215,7 +221,7 @@
           "vizConfig": {
             "kind": "VizConfig",
             "group": "logs",
-            "version": "13.0.8",
+            "version": "13.0.10",
             "spec": {
               "options": {
                 "dedupStrategy": "none",
@@ -224,7 +230,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "timestampResolution": "ms",
@@ -263,7 +269,7 @@
                       "spec": {
                         "direction": "backward",
                         "editorMode": "builder",
-                        "expr": "{service=\"backend\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}`",
+                        "expr": "{service=\"backend\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}` ${log_only:raw}",
                         "queryType": "range"
                       }
                     },
@@ -279,7 +285,7 @@
           "vizConfig": {
             "kind": "VizConfig",
             "group": "logs",
-            "version": "13.0.8",
+            "version": "13.0.10",
             "spec": {
               "options": {
                 "dedupStrategy": "none",
@@ -288,7 +294,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "timestampResolution": "ms",
@@ -451,6 +457,25 @@
           "query": "",
           "hide": "dontHide",
           "skipUrlSync": false
+        }
+      },
+      {
+        "kind": "CustomVariable",
+        "spec": {
+          "name": "log_only",
+          "query": "False : | logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{__line__}}{{end}}` | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__, \nTrue : | logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{$json := fromJson (__line__)}}{{if $json}}{{with $json.message}}{{.}}{{end}}{{else}}{{__line__}}{{end}}{{end}}` | display_line != \"\" | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__",
+          "current": {
+            "text": "True",
+            "value": "| logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{$json := fromJson (__line__)}}{{if $json}}{{with $json.message}}{{.}}{{end}}{{else}}{{__line__}}{{end}}{{end}}` | display_line != \"\" | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__"
+          },
+          "options": [],
+          "multi": false,
+          "includeAll": false,
+          "hide": "dontHide",
+          "skipUrlSync": false,
+          "description": "Show only the log message, without additional fields, and hide metric logs.",
+          "allowCustomValue": true,
+          "valuesFormat": "csv"
         }
       }
     ],
