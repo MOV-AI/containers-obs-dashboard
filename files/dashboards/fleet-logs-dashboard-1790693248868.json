@@ -73,7 +73,7 @@
                       },
                       "spec": {
                         "direction": "backward",
-                        "editorMode": "code",
+                        "editorMode": "builder",
                         "expr": "{service_name=\"ros1-workspace\", robot=\"$robot\"}\n| detected_level =~ `${Levels:regex}`\n|~ `${search}` \n${log_only:raw}",
                         "queryType": "range"
                       }
@@ -101,7 +101,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "syntaxHighlighting": false,
@@ -140,7 +140,7 @@
                       },
                       "spec": {
                         "direction": "backward",
-                        "editorMode": "code",
+                        "editorMode": "builder",
                         "expr": "{service_name=\"ros2-workspace\", robot=\"$robot\"} | detected_level =~ `${Levels:regex}` |~ `(?i)${search}` ${log_only:raw}",
                         "queryType": "range"
                       }
@@ -166,7 +166,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "timestampResolution": "ms",
@@ -230,7 +230,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "timestampResolution": "ms",
@@ -294,7 +294,7 @@
                 "prettifyLogMessage": true,
                 "showControls": false,
                 "showFieldSelector": false,
-                "showLevel": true,
+                "showLevel": false,
                 "showTime": false,
                 "sortOrder": "Descending",
                 "timestampResolution": "ms",
@@ -463,7 +463,7 @@
         "kind": "CustomVariable",
         "spec": {
           "name": "log_only",
-          "query": "False : | line_format `{{ __line__ }}`, \nTrue : | logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{$json := fromJson (__line__)}}{{if $json}}{{with $json.message}}{{.}}{{end}}{{else}}{{__line__}}{{end}}{{end}}` | display_line != \"\" | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__",
+          "query": "False : | logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{__line__}}{{end}}` | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__, \nTrue : | logfmt | label_format display_line=`{{if .log}}{{.log}}{{else}}{{$json := fromJson (__line__)}}{{if $json}}{{with $json.message}}{{.}}{{end}}{{else}}{{__line__}}{{end}}{{end}}` | display_line != \"\" | line_format `{{.display_line}}` | drop display_line | drop __error__ | drop __error_details__",
           "current": {
             "text": "False",
             "value": "False"
@@ -473,7 +473,7 @@
           "includeAll": false,
           "hide": "dontHide",
           "skipUrlSync": false,
-          "description": "Show only the log message, without additional fields.",
+          "description": "Show only the log message, without additional fields, and hide metric logs.",
           "allowCustomValue": true,
           "valuesFormat": "csv"
         }
